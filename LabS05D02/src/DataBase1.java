@@ -1,5 +1,7 @@
 public class DataBase1 {
-	public static void main(String[] args) {
+
+	public static User[] dataBase() {
+
 		User[] nizUsera = new User[3];
 
 		for (int i = 0; i < nizUsera.length; i++) {
@@ -17,11 +19,35 @@ public class DataBase1 {
 
 			nizUsera[i] = db;
 		}
+		return nizUsera;
+	}
 
-		//System.out.println(db.ime + " " + db.prezime + " " + db.brojGodina);
-		for(int i=0; i<nizUsera.length;i++){
-			System.out.println(nizUsera[i].ime +" " +nizUsera[i].prezime +" " +nizUsera[i].brojGodina);
+	public static void ispisDataBase(User[] nizUsera) {
+
+		for (int i = 0; i < nizUsera.length; i++) {
+			System.out.println(nizUsera[i].ime + " " + nizUsera[i].prezime
+					+ " " + nizUsera[i].brojGodina);
 		}
+	}
+
+	public static void najstarijiUser(User[] nizUsera) {
+		int min = nizUsera[0].brojGodina;
+		String ime = "";
+		for (int i = 1; i < nizUsera.length; i++) {
+
+			if (nizUsera[i].brojGodina < min) {
+				min = nizUsera[i].brojGodina;
+				ime = nizUsera[i].ime;
+			}
+		}
+		System.out.println("Najmladji user je " + ime + " i ona ima " + min
+				+ " godina.");
+	}
+
+	public static void main(String[] args) {
+
+		// ispisDataBase(dataBase());
+		najstarijiUser(dataBase());
 
 	}
 }
